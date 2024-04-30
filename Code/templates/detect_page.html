@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retinal Disease Image Recognition</title>
+<!-- link to the css file of home_page-->
+<link rel="stylesheet" href="../static/detect_page.css">
+</head>
+<body>
+  <h1>Retinal Disease Image Recognition</h1>
+  <form id="uploadForm" action="/detect_page" method="post" enctype="multipart/form-data">
+
+    <label id="fileLabel" for="imageInput">Select an image file:</label>
+    <input type="file" id="imageInput" name="imageFile" accept="image/*"  required>
+    <button id="chooseImageButton" type="button" onclick="document.getElementById('imageInput').click()">Choose Image</button>
+    <button id="uploadButton" type='button' onclick="uploadImage()">Upload Image</button>
+    <div class="predictButtonContainer"> <!-- Container for the Predict button -->
+      <button class="predictButton" onclick="predictImage()">Predict</button>
+    </div>
+  </form>
+
+  <div class="imageContainer">
+    <div id="imageDisplay" class="imageDisplay"></div> <!-- Container to display the selected image -->
+    <img id="imagePreview" src="#" alt="Image Preview">
+  </div>
+  <div id="deleteButtonContainer"> <!-- Container for the delete button -->
+    <button id="deleteButton" onclick="deleteImage()">Delete Image</button> <!-- Delete button outside the image container -->
+  </div>
+<div id="spacer"></div>
+
+  <div id="result">
+    <h2>Recognition Result:</h2>
+    <p id="resultText"></p>
+  </div>
+ <script src="{{ url_for('static', filename='js/web.js') }}"></script>
+</body>
+</html>
